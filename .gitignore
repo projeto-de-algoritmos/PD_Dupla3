@@ -1,0 +1,9 @@
+node_modules
+env
+yarn.lock
+
+
+get_caracthers.py
+get_food.py
+characters.json
+food.json
