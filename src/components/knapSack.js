@@ -10,6 +10,17 @@ const print_matriz = (table) => {
     console.log(str + '\n');
 }
 
+// pega 15 alimentos aleatorios
+const getRandomFoods = (foods) => {
+    const randomFoods = [];
+    for (let i = 0; i < 15; i++) {
+        const random = foods[(Math.random() * foods.length) | 0];
+        randomFoods.push(random);
+    }
+    return randomFoods;
+}
+
+
 //Depois de escolher o personagem, ele possui um peso da mochila
 const knapSack = (foods, bag_weight) => {
     const qtdItens = foods.length;
@@ -62,4 +73,4 @@ const knapSack = (foods, bag_weight) => {
     return { 'bestValue': bestValue, 'selectedFoods': selectedFoods };
 }
 
-export default knapSack;
+export default { knapSack, getRandomFoods };

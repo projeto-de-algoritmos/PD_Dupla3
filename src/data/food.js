@@ -1555,19 +1555,4 @@ const foods = [
     }
 ]
 
-
-// pega 15 alimentos aleatorios
-const getRandomFoods = (foods) => {
-    const randomFoods = [];
-    for (let i = 0; i < 15; i++) {
-        const random = foods[(Math.random() * foods.length) | 0];
-        randomFoods.push(random);
-    }
-
-    return randomFoods;
-}
-
-export default getRandomFoods;
-
-// const x = getRandomFoods(foods);
-// console.log(x)
+export default { foods };

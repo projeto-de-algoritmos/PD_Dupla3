@@ -121,4 +121,4 @@ const characters = [
     }
 ]
 
-export default characters;
+export default { characters };
