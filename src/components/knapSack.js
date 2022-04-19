@@ -17,6 +17,7 @@ const getRandomFoods = (foods) => {
         const random = foods[(Math.random() * foods.length) | 0];
         randomFoods.push(random);
     }
+    console.log(randomFoods)
     return randomFoods;
 }
 

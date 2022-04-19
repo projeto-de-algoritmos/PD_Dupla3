@@ -10,7 +10,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #402B3C;
+  background-color: #402B3C !important;
 }
 
 .App-header {
@@ -25,6 +25,13 @@ body {
   justify-content: center;
   text-align: center;
   font-weight: 500;
+}
+
+.items {
+  width: 100% !important;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .header-title {
@@ -65,4 +72,11 @@ body {
 
 .mrg-top-500 {
   margin-top: 500px;
+}
+
+.card {
+  align-items: center;
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 15px;
 }
