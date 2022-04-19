@@ -48,3 +48,7 @@ yarn start
 O projeto estará rodando na porta ```localhost:3000```
 
 ## Vídeo
+
+[Link Youtube](https://youtu.be/h6tg1PuYRhU)
+
+[Link Drive - Baixar](https://drive.google.com/file/d/1dpqAOr3gSN81KJ73eJKN5Zg6vKNuO5Cp/view?usp=sharing)
