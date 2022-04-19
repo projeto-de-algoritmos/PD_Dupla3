@@ -13,7 +13,7 @@ function App() {
   const [foods, setFoods] = useState([]);
   const [characters, setCharacters] = useState([]);
   const [bestDistribution, setBestDistribution] = useState({});
-  const [bagSize, setBagSize] = useState(0);
+  const [selectedCharacter, setSelectedCharacter] = useState([]);
 
   return (
     <div className="App">
@@ -88,14 +88,14 @@ function App() {
                 return (
                   <div className="action">
                     <Card style={{ width: '15rem' }}>
-                      <Card.Img style={{ width: '40px' }} variant="top" src={character.link} />
+                      <Card.Img style={{ width: '60px' }} variant="top" src={character.link} />
                       <Card.Body>
                         <Card.Title>{character.name}</Card.Title>
                       </Card.Body>
                       <ListGroup className="list-group-flush">
                         <ListGroupItem>Mochila: {character.bag}</ListGroupItem>
                       </ListGroup>
-                      <button className="card-button" type="button" onClick={() => { setBestDistribution(knapSack.knapSack(foods, character.bag)); setBagSize(character.bag) }}>
+                      <button className="card-button" type="button" onClick={() => { setBestDistribution(knapSack.knapSack(foods, character.bag)); setSelectedCharacter(character) }}>
                         Selecionar
                       </button>
                     </Card>
@@ -108,7 +108,10 @@ function App() {
         {Object.keys(bestDistribution).length !== 0 ?
           <div>
             <div className="action mrg-top-50">
-                <span className="result">De acordo com o tamanho da mochila {bagSize}, os itens possíveis de levar são: </span>
+                <img src={selectedCharacter.link} width="200px"/>
+            </div>
+            <div className="action mrg-top-50 mrg-btm-20">
+                <span className="result">{selectedCharacter.name}, de acordo com o tamanho da mochila {selectedCharacter.bag}, os itens possíveis de levar são: </span>
               </div>
             <div className="items">
               {bestDistribution.selectedFoods?.map((food) => {
@@ -128,7 +131,7 @@ function App() {
                 );
               })}
             </div>
-            <div className="action mrg-top-50">
+            <div className="action mrg-btm-100">
                 <span className="result">O peso total da sua mochila é de {bestDistribution.bestValue} </span>
               </div>
           </div> : null}
