@@ -129,7 +129,7 @@ function App() {
               })}
             </div>
             <div className="action mrg-top-50">
-                <span className="result">O peso total da sua mochila é de {bestDistribution.bestValue} </span>
+                <span className="result">A quantidade de vida que você terá é {bestDistribution.totalLife} e o peso total da sua mochila é de {bestDistribution.totalWeight} </span>
               </div>
           </div> : null}
       </body>
