@@ -6,12 +6,14 @@ import { useState } from 'react';
 import Card from 'react-bootstrap/Card'
 import ListGroup from 'react-bootstrap/ListGroup'
 import ListGroupItem from 'react-bootstrap/ListGroupItem'
+import image from './assets/dontStarve.png'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   const [foods, setFoods] = useState([]);
   const [characters, setCharacters] = useState([]);
-  const [bestDistribution, setBestDistribution] = useState([]);
+  const [bestDistribution, setBestDistribution] = useState({});
+  const [bagSize, setBagSize] = useState(0);
 
   return (
     <div className="App">
@@ -22,15 +24,34 @@ function App() {
       </header>
       <body>
         <div>
-          {foods.length === 0 && characters.length === 0 ?
-            <div className="action mrg-top-500">
-              <button className="graph-button mrg-right-10" type="button" onClick={() => { setFoods(knapSack.getRandomFoods(food.foods)) }}>
-                Sortear itens
-              </button>
+          {foods.length === 0 && characters.length === 0 && Object.keys(bestDistribution).length === 0 ?
+            <div>
+              <div className="action">
+                <img src={image} />
+              </div>
+              <div className="action mrg-top-100">
+                <span className="result">Baseado no jogo <a className="result" href="https://dontstarve.fandom.com/wiki/Don%27t_Starve">Don't Starve Together</a>, em que você é um personagem que precisa sobreviver na floresta, a aplicação consiste em 3 passos:</span>
+              </div>
+              <div className="steps">
+                <div className="steps-card">
+                  <ul className="result">
+                    <ol>
+                      <li>Sortear itens que estarão disponíveis para uso</li>
+                      <li>Selecionar personagem desejado para o jogo</li>
+                      <li>Visualizar itens possíveis de serem levados de acordo com personagem</li>
+                    </ol>
+                  </ul>
+                </div>
+              </div>
+              <div className="action mrg-top-100">
+                <button className="graph-button mrg-right-10" type="button" onClick={() => { setFoods(knapSack.getRandomFoods(food.foods)) }}>
+                  Sortear itens
+                </button>
+              </div>
             </div>
             : null}
         </div>
-        {foods.length > 0 && characters.length === 0 ?
+        {foods.length > 0 && characters.length === 0 && Object.keys(bestDistribution).length === 0 ?
           <div>
             <div className="items">
               {foods?.map((food) => {
@@ -60,7 +81,7 @@ function App() {
             </div>
           </div> : null}
 
-        {characters.length > 0 ?
+        {characters.length > 0 && Object.keys(bestDistribution).length === 0 ?
           <div>
             <div className="items">
               {characters?.map((character) => {
@@ -74,7 +95,7 @@ function App() {
                       <ListGroup className="list-group-flush">
                         <ListGroupItem>Mochila: {character.bag}</ListGroupItem>
                       </ListGroup>
-                      <button className="card-button" type="button" onClick={() => { setBestDistribution(knapSack.knapSack(foods, character.bag)) }}>
+                      <button className="card-button" type="button" onClick={() => { setBestDistribution(knapSack.knapSack(foods, character.bag)); setBagSize(character.bag) }}>
                         Selecionar
                       </button>
                     </Card>
@@ -82,6 +103,34 @@ function App() {
                 );
               })}
             </div>
+          </div> : null}
+
+        {Object.keys(bestDistribution).length !== 0 ?
+          <div>
+            <div className="action mrg-top-50">
+                <span className="result">De acordo com o tamanho da mochila {bagSize}, os itens possíveis de levar são: </span>
+              </div>
+            <div className="items">
+              {bestDistribution.selectedFoods?.map((food) => {
+                return (
+                  <div className="action">
+                    <Card style={{ width: '15rem' }}>
+                      <Card.Img style={{ width: '40px' }} variant="top" src={food.link} />
+                      <Card.Body>
+                        <Card.Title>{food.name}</Card.Title>
+                      </Card.Body>
+                      <ListGroup className="list-group-flush">
+                        <ListGroupItem>Vida: {food.life}</ListGroupItem>
+                        <ListGroupItem>Peso: {food.weight}</ListGroupItem>
+                      </ListGroup>
+                    </Card>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="action mrg-top-50">
+                <span className="result">O peso total da sua mochila é de {bestDistribution.bestValue} </span>
+              </div>
           </div> : null}
       </body>
     </div>

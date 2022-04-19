@@ -32,6 +32,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 100px;
 }
 
 .header-title {
@@ -70,8 +71,8 @@ body {
   font-size: 25px;
 }
 
-.mrg-top-500 {
-  margin-top: 500px;
+.mrg-top-50 {
+  margin-top: 50px;
 }
 
 .mrg-top-100 {
@@ -95,4 +96,30 @@ body {
   border-radius: 10px !important;
   cursor: pointer;
   font-size: 12px;
+  font-family: 'Open Sans';
+  font-weight: 700;
+}
+
+.result {
+  font-family: 'Open Sans';
+  color: white;
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+a.result, a.result:hover {
+  color: #E0BCDD;
+}
+
+.steps {
+  display: flex;
+  justify-content: center;
+}
+
+.steps-card {
+  background-color: #151410;
+  width: 900px;
+  margin-top: 50px;
+  padding: 20px;
 }

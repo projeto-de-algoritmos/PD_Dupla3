@@ -64,13 +64,14 @@ const knapSack = (foods, bag_weight) => {
 
     for (let i = qtdItens - 1; i >= 1; i--) {
         if (selection[i][m] === 1) {
-            console.log(foods[i].name, foods[i].vida, foods[i].peso);
+            console.log(foods[i].name, foods[i].life, foods[i].weight);
             selectedFoods.push(foods[i]);
-            m = m - foods[i].peso;
+            m = m - foods[i].weight;
         }
     }
 
     let bestValue = M[qtdItens - 1][bag_weight];
+    console.log({ 'bestValue': bestValue, 'selectedFoods': selectedFoods })
     return { 'bestValue': bestValue, 'selectedFoods': selectedFoods };
 }
 
