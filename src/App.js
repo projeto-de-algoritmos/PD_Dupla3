@@ -108,11 +108,11 @@ function App() {
         {Object.keys(bestDistribution).length !== 0 ?
           <div>
             <div className="action mrg-top-50">
-                <img src={selectedCharacter.link} width="200px"/>
+              <img src={selectedCharacter.link} width="200px" />
             </div>
             <div className="action mrg-top-50 mrg-btm-20">
-                <span className="result">{selectedCharacter.name}, de acordo com o tamanho da mochila {selectedCharacter.bag}, os itens possíveis de levar são: </span>
-              </div>
+              <span className="result">{selectedCharacter.name}, de acordo com o tamanho da mochila {selectedCharacter.bag}, os itens possíveis de levar são: </span>
+            </div>
             <div className="items">
               {bestDistribution.selectedFoods?.map((food) => {
                 return (
@@ -132,8 +132,8 @@ function App() {
               })}
             </div>
             <div className="action mrg-btm-100">
-                <span className="result">O peso total da sua mochila é de {bestDistribution.bestValue} </span>
-              </div>
+              <span className="result">A quantidade de vida que você terá é {bestDistribution.totalLife} e o peso total da sua mochila é de {bestDistribution.totalWeight}</span>
+            </div>
           </div> : null}
       </body>
     </div>

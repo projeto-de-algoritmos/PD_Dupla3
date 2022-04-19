@@ -61,18 +61,20 @@ const knapSack = (foods, bag_weight) => {
 
     const selectedFoods = [];
     let m = bag_weight;
+    let actual_bag_weight  = 0;
 
     for (let i = qtdItens - 1; i >= 1; i--) {
         if (selection[i][m] === 1) {
             console.log(foods[i].name, foods[i].life, foods[i].weight);
             selectedFoods.push(foods[i]);
+            actual_bag_weight += foods[i].weight;
             m = m - foods[i].weight;
         }
     }
 
-    let bestValue = M[qtdItens - 1][bag_weight];
+    let bestValue = M[qtdItens-1][bag_weight];
     console.log({ 'bestValue': bestValue, 'selectedFoods': selectedFoods })
-    return { 'bestValue': bestValue, 'selectedFoods': selectedFoods };
+    return { 'totalLife': bestValue, 'totalWeight': actual_bag_weight, 'selectedFoods': selectedFoods };
 }
 
 export default { knapSack, getRandomFoods };
